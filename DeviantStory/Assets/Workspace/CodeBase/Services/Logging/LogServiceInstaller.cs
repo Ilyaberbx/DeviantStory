@@ -4,18 +4,18 @@ using Sirenix.OdinInspector;
 using Workspace.CodeBase.Extensions;
 using Zenject;
 
-namespace Workspace.CodeBase.Infrastructure
+namespace Workspace.CodeBase.Services.Logging
 {
-    public class BootstrapperInstaller : MonoInstaller
+    public class LogServiceInstaller : MonoInstaller
     {
         [TypeFilter("GetFilteredTypeList"), ShowInInspector]
-        private IBootstrapper _bootstrapper;
+        private ILogService _logger;
 
         public override void InstallBindings() =>
-            Container.BindInterfacesTo(_bootstrapper.GetType())
+            Container.BindInterfacesTo(_logger.GetType())
                 .AsSingle();
         
         public IEnumerable<Type> GetFilteredTypeList() 
-            => typeof(IBootstrapper).GetNonGenericInheritedTypes();
+            => typeof(ILogService).GetNonGenericInheritedTypes();
     }
 }

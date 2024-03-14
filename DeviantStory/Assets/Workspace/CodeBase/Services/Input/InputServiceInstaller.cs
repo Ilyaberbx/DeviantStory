@@ -8,13 +8,12 @@ namespace Workspace.CodeBase.Services.Input
 {
     public class InputServiceInstaller : MonoInstaller
     {
-        [TypeFilter("GetFilteredTypeList"), ShowInInspector] 
-        public IInputService InputType { get; private set; }
-        
+        [TypeFilter("GetFilteredTypeList"), ShowInInspector]
+        private IInputService _input;
+
         public override void InstallBindings() =>
-            Container.BindInterfacesTo(InputType.GetType())
-                .AsSingle()
-                .NonLazy();
+            Container.BindInterfacesTo(_input.GetType())
+                .AsSingle();
 
         public IEnumerable<Type> GetFilteredTypeList() 
             => typeof(IInputService).GetNonGenericInheritedTypes();

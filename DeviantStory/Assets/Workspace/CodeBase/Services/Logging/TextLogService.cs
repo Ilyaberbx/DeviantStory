@@ -1,12 +1,12 @@
-﻿using TMPro;
+using TMPro;
 
-namespace Workspace.Workspace.CodeBase.Utiliting.Logging
+namespace Workspace.CodeBase.Services.Logging
 {
-    public class Logger
+    public class TextLogService : ILogService
     {
         private readonly TextMeshProUGUI _logText;
 
-        public Logger(TextMeshProUGUI logText) 
+        public TextLogService(TextMeshProUGUI logText) 
             => _logText = logText;
 
         public void Log(string message)
