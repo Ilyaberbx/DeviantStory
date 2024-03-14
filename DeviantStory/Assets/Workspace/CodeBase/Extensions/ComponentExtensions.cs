@@ -12,7 +12,7 @@ namespace Workspace.CodeBase.Extensions
 
             if (type != other.GetType())
                 return null; // type mis-match
-
+            
             BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance |
                                  BindingFlags.Default | BindingFlags.DeclaredOnly;
             PropertyInfo[] pinfos = type.GetProperties(flags);
