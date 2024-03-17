@@ -92,6 +92,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705ba2c32a0b4a429e81daad56acf8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _input:
+    rid: 3300502245934104576
+  references:
+    version: 2
+    RefIds:
+    - rid: 3300502245934104576
+      type: {class: NewInputService, ns: Workspace.CodeBase.Services.Input, asm: Assembly-CSharp}
+      data: 
 --- !u!114 &4091879036713436115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +112,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7649d76dc0416eaaf78e6948bf854d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bootstrapper:
+    rid: 3300502245934104577
+  references:
+    version: 2
+    RefIds:
+    - rid: 3300502245934104577
+      type: {class: GameplayBootstrapper, ns: Workspace.CodeBase.Infrastructure.GamePlay.Root,
+        asm: Assembly-CSharp}
+      data: 
 --- !u!114 &4318489814758844022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3af7e4253634566a725947c59e7c555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _logger:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

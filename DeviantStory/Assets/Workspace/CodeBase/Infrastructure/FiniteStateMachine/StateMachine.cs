@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Sirenix.Utilities;
 using Workspace.CodeBase.Infrastructure.Service.StateMachineSystem.State;
 using Zenject;
 
 namespace Workspace.CodeBase.Infrastructure.FiniteStateMachine
 {
-    public abstract class StateMachine : ITickable
+    public abstract class StateMachine : ITickable, IFixedTickable
     {
         private readonly Dictionary<Type, IExitableState> _registeredStates = new();
         private IExitableState _currentState;
@@ -23,8 +22,6 @@ namespace Workspace.CodeBase.Infrastructure.FiniteStateMachine
             CollectTickables<TState>();
         }
         
-        
-
         public async UniTask Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
             TState newState = await ChangeState<TState>();
@@ -46,21 +43,21 @@ namespace Workspace.CodeBase.Infrastructure.FiniteStateMachine
 
         private void CollectTickables<TState>() where TState : class, IExitableState
         {
-            if (typeof(TState).ImplementsOrInherits(typeof(ITickable)))
+            if (typeof(TState).IsAssignableFrom(typeof(ITickable)))
                 _tickableState = _currentState as ITickable;
 
-            if (typeof(TState).ImplementsOrInherits(typeof(IFixedTickable)))
+            if (typeof(TState).IsAssignableFrom(typeof(IFixedTickable)))
                 _fixedTickableState = _currentState as IFixedTickable;
         }
 
         public void RegisterState(IExitableState state)
             => _registeredStates.Add(state.GetType(), state);
 
-        public void Tick()
-        {
-            _tickableState?.Tick();
-            _fixedTickableState?.FixedTick();
-        }
+        public void Tick() 
+            => _tickableState?.Tick();
+
+        public void FixedTick() 
+            => _fixedTickableState?.FixedTick();
 
         private async UniTask<TState> ChangeState<TState>() where TState : class, IExitableState
         {

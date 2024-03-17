@@ -1,21 +1,17 @@
-using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using Workspace.CodeBase.Extensions;
+using Better.Attributes.Runtime.Select;
+using UnityEngine;
 using Zenject;
 
 namespace Workspace.CodeBase.Infrastructure
 {
     public class BootstrapperInstaller : MonoInstaller
     {
-        [TypeFilter("GetFilteredTypeList"), ShowInInspector]
+        [Select, SerializeReference]
         private IBootstrapper _bootstrapper;
 
         public override void InstallBindings() =>
             Container.BindInterfacesTo(_bootstrapper.GetType())
                 .AsSingle();
         
-        public IEnumerable<Type> GetFilteredTypeList() 
-            => typeof(IBootstrapper).GetNonGenericInheritedTypes();
     }
 }

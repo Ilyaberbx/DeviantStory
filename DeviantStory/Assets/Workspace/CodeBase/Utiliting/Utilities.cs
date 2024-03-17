@@ -1,7 +1,7 @@
 ﻿using Workspace.CodeBase.Services.Logging;
 using Zenject;
 
-namespace Workspace.Workspace.CodeBase.Utiliting
+namespace Workspace.CodeBase.Utiliting
 {
     public static class Utilities
     {

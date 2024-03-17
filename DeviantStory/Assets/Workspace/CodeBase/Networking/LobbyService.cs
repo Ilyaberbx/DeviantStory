@@ -1,6 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
-using Workspace.Workspace.CodeBase.Utiliting;
+using Workspace.CodeBase.Utiliting;
 
 namespace Workspace.CodeBase.Networking
 {
