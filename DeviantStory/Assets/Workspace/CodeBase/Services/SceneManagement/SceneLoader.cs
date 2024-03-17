@@ -4,7 +4,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace Workspace.CodeBase.Infrastructure.SceneManagement
+namespace Workspace.CodeBase.Services.SceneManagement
 {
     public class SceneLoader : ISceneLoader
     {
