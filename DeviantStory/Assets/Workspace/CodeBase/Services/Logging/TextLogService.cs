@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -21,6 +20,9 @@ namespace Workspace.CodeBase.Services.Logging
             _factory = factory;
         }
 
+        public void LogNetworking(string message)
+            => Log($"[Networking] {message}");
+
         public void LogInfrastructure(string message) 
             => Log($"[Infrastructure] {message}");
 
@@ -30,7 +32,7 @@ namespace Workspace.CodeBase.Services.Logging
             _logText = canvas.GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        public void Log(string message)
+        private void Log(string message)
         {
             if (!string.IsNullOrEmpty(_logText.text))
                 _logText.text += "\n";
