@@ -243,11 +243,11 @@
       "url": "https://packages.unity.com"
     },
     "com.uurha.betterattributes": {
-      "version": "3.0.12",
+      "version": "3.0.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.uurha.bettereditortools": "1.5.24",
+        "com.uurha.bettereditortools": "1.5.25",
         "com.tdw.better.internal.core": "0.0.2"
       },
       "url": "https://package.openupm.com"
@@ -262,19 +262,19 @@
       "url": "https://package.openupm.com"
     },
     "com.uurha.bettereditortools": {
-      "version": "1.5.24",
+      "version": "1.5.25",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.uurha.betterdatastructures": "0.1.7",
-        "com.uurha.betterextensions": "1.5.95",
+        "com.uurha.betterextensions": "1.5.98",
         "com.tdw.better.internal.core": "0.0.2"
       },
       "url": "https://package.openupm.com"
     },
     "com.uurha.betterextensions": {
-      "version": "1.5.95",
-      "depth": 2,
+      "version": "1.5.98",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.tdw.better.internal.core": "0.0.2"

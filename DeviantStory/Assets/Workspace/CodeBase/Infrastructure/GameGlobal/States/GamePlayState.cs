@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
+using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Workspace.CodeBase.Infrastructure.Service.StateMachineSystem.State;
-using Workspace.CodeBase.Networking;
 using Workspace.CodeBase.Networking.Connection;
-using Workspace.CodeBase.Networking.Rooms;
+using Workspace.CodeBase.Networking.MatchMaking;
 using Workspace.CodeBase.Services.Assets;
 using Workspace.CodeBase.Services.Logging;
 using Workspace.CodeBase.Services.SceneManagement;
@@ -18,21 +18,21 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
         private readonly ILoadingCurtain _curtain;
         private readonly ILogService _logger;
         private readonly IConnectionService _connectionService;
-        private readonly IRoomsService _roomsService;
+        private readonly IMatchMakingService _matchMakingService;
 
         public GamePlayState(IAssetsProvider assets
             , ISceneLoader sceneLoader
             , ILoadingCurtain curtain
             , ILogService logger
             , IConnectionService connectionService
-            , IRoomsService roomsService)
+            , IMatchMakingService matchMakingService)
         {
             _assets = assets;
             _sceneLoader = sceneLoader;
             _curtain = curtain;
             _logger = logger;
             _connectionService = connectionService;
-            _roomsService = roomsService;
+            _matchMakingService = matchMakingService;
         }
 
         public async UniTask Enter()
@@ -44,7 +44,7 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
             await _assets.WarmUpAssetsByLabel(AssetsLabels.Gameplay);
             await _sceneLoader.LoadAsync(SceneNames.Gameplay, LoadSceneMode.Single);
             await _connectionService.ConnectToMasterServer();
-            await _roomsService.JoinOrCreateRoom();
+            await _matchMakingService.JoinOrCreateRoom();
             
             _curtain.Hide();
         }

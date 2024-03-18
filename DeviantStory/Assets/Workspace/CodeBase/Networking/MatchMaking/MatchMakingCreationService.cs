@@ -6,10 +6,10 @@ using Workspace.CodeBase.Networking.Connection;
 using Workspace.CodeBase.Services.Logging;
 using Zenject;
 
-namespace Workspace.CodeBase.Networking.Rooms
+namespace Workspace.CodeBase.Networking.MatchMaking
 {
-    public class RoomsService : MatchMakingCallbacksHandler
-        , IRoomsService
+    public class MatchMakingCreationService : MatchMakingCallbacksHandler
+        , IMatchMakingService
         , IInitializable
         , IDisposable
     {
@@ -18,7 +18,7 @@ namespace Workspace.CodeBase.Networking.Rooms
 
         private UniTaskCompletionSource _roomCreationTask;
 
-        public RoomsService(IConnectionService connectionService
+        public MatchMakingCreationService(IConnectionService connectionService
             , ILogService logger)
         {
             _connectionService = connectionService;

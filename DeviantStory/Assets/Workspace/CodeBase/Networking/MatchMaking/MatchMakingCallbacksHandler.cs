@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Photon.Realtime;
 
-namespace Workspace.CodeBase.Networking.Rooms
+namespace Workspace.CodeBase.Networking.MatchMaking
 {
     public class MatchMakingCallbacksHandler : IMatchmakingCallbacks
     {
