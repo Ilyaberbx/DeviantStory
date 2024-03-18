@@ -1,11 +1,16 @@
 ﻿using Photon.Pun;
 using UnityEngine;
-using Workspace.CodeBase.Utiliting;
+using Workspace.CodeBase.Services.Logging;
 
 namespace Workspace.CodeBase.Networking
 {
-    public class LobbyService
+    public class LobbyService : ILobbyService
     {
+        private readonly ILogService _logger;
+
+        public LobbyService(ILogService logger)
+            => _logger = logger;
+
         public void Start()
         {
             PhotonNetwork.NickName = "Player" + Random.Range(1, 1000);
@@ -13,7 +18,7 @@ namespace Workspace.CodeBase.Networking
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
 
-            Utilities.Logger.Log("Player's name is set to: " + PhotonNetwork.NickName);
+            _logger.Log("Player's name is set to: " + PhotonNetwork.NickName);
         }
     }
 }

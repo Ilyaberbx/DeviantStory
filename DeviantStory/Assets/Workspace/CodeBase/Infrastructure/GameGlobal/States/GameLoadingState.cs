@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Workspace.CodeBase.Infrastructure.Service.StateMachineSystem.State;
 using Workspace.CodeBase.Services.Assets;
 using Workspace.CodeBase.Services.SceneManagement;
 
 namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
 {
-    public class GameLoadingState
+    public class GameLoadingState : IState
     {
         private readonly IAssetsProvider _assets;
         private readonly ISceneLoader _sceneLoader;

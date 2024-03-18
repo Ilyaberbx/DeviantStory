@@ -1,4 +1,5 @@
 using Better.Attributes.Runtime.Select;
+using Better.DataStructures.Runtime.SerializedTypes;
 using UnityEngine;
 using Zenject;
 
@@ -6,11 +7,11 @@ namespace Workspace.CodeBase.Services.Input
 {
     public class InputServiceInstaller : MonoInstaller
     {
-        [Select, SerializeReference]
-        private IInputService _input;
+        [Select(typeof(IInputService)), SerializeField]
+        private SerializedType _serializedType;
 
         public override void InstallBindings() =>
-            Container.BindInterfacesTo(_input.GetType())
+            Container.BindInterfacesTo(_serializedType.Type)
                 .AsSingle();
         
     }

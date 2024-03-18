@@ -12,8 +12,13 @@ GameObject:
   - component: {fileID: 1391082134096147903}
   - component: {fileID: 7403944800896029206}
   - component: {fileID: 4948241974350074099}
-  - component: {fileID: 4091879036713436115}
   - component: {fileID: 4318489814758844022}
+  - component: {fileID: 8673827146560894855}
+  - component: {fileID: 3477056221817574808}
+  - component: {fileID: 31808025538412542}
+  - component: {fileID: 7764914780674107789}
+  - component: {fileID: 5757451532216950620}
+  - component: {fileID: 5947901720542633680}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -53,7 +58,12 @@ MonoBehaviour:
   - {fileID: 4948241974350074099}
   - {fileID: 7403944800896029206}
   - {fileID: 4318489814758844022}
-  - {fileID: 4091879036713436115}
+  - {fileID: 8673827146560894855}
+  - {fileID: 3477056221817574808}
+  - {fileID: 31808025538412542}
+  - {fileID: 7764914780674107789}
+  - {fileID: 5757451532216950620}
+  - {fileID: 5947901720542633680}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -92,35 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705ba2c32a0b4a429e81daad56acf8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _input:
-    rid: 3300502245934104576
-  references:
-    version: 2
-    RefIds:
-    - rid: 3300502245934104576
-      type: {class: NewInputService, ns: Workspace.CodeBase.Services.Input, asm: Assembly-CSharp}
-      data: 
---- !u!114 &4091879036713436115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7950936677226237612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f7649d76dc0416eaaf78e6948bf854d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bootstrapper:
-    rid: 3300502245934104577
-  references:
-    version: 2
-    RefIds:
-    - rid: 3300502245934104577
-      type: {class: GameplayBootstrapper, ns: Workspace.CodeBase.Infrastructure.GamePlay.Root,
-        asm: Assembly-CSharp}
-      data: 
+  _serializedType:
+    _fullQualifiedName: Workspace.CodeBase.Services.Input.NewInputService, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &4318489814758844022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,10 +117,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3af7e4253634566a725947c59e7c555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _logger:
-    rid: -2
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+  _logTableReference:
+    m_AssetGUID: 9852103d4f930014aaa21b0188ea1308
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+--- !u!114 &8673827146560894855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2784fdaf60d54f92b9f9d6cffe29f813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3477056221817574808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebe90f6bf984e8f8638990151c61cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &31808025538412542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e52cabc55224c6992f24fd7b6fd1bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7764914780674107789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f1ff94090f47439122193f0ea977c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedType:
+    _fullQualifiedName: Workspace.CodeBase.Infrastructure.GameGlobal.States.GlobalStateMachine,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &5757451532216950620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62144ec0de4f4655bf7e10e5b16f2d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curtainReference:
+    m_AssetGUID: d439c5461c9ca6448bd306c9489e153a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+--- !u!114 &5947901720542633680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950936677226237612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11a5839ca084d49a0775cf047b215f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
