@@ -8,7 +8,7 @@ using Workspace.CodeBase.Services.SceneManagement;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Workspace.CodeBase.Networking
+namespace Workspace.CodeBase.Networking.Connection
 {
     public class ConnectionService : ConnectionCallbacksHandler
         , IConnectionService
@@ -26,6 +26,8 @@ namespace Workspace.CodeBase.Networking
             _logger = logger;
             _sceneLoader = sceneLoader;
         }
+
+        public bool IsConnected => PhotonNetwork.IsConnected;
 
         public void Initialize()
             => PhotonNetwork.AddCallbackTarget(this);
@@ -59,7 +61,7 @@ namespace Workspace.CodeBase.Networking
 
         public override void OnConnectedToMaster()
         {
-            _logger.LogNetworking("Connected to master ");
+            _logger.LogNetworking("Connected to master");
             _connectionCompletionSource.TrySetResult();
         }
 

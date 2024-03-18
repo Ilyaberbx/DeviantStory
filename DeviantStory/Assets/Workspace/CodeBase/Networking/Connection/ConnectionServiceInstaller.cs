@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Workspace.CodeBase.Networking
+namespace Workspace.CodeBase.Networking.Connection
 {
     public class ConnectionServiceInstaller : MonoInstaller
     {

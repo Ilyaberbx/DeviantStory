@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Photon.Realtime;
 
-namespace Workspace.CodeBase.Networking
+namespace Workspace.CodeBase.Networking.Connection
 {
     public abstract class ConnectionCallbacksHandler : IConnectionCallbacks
     {
@@ -28,5 +28,6 @@ namespace Workspace.CodeBase.Networking
         public virtual void OnCustomAuthenticationFailed(string debugMessage)
         {
         }
+        
     }
 }
