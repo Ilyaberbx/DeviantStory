@@ -7,5 +7,6 @@ namespace Workspace.CodeBase.Services.Logging
         void LogNetworking(string message);
         void LogInfrastructure(string message);
         UniTask Initialize();
+        void LogError(string message);
     }
 }

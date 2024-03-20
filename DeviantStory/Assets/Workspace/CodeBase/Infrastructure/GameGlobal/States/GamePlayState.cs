@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Workspace.CodeBase.Infrastructure.Service.StateMachineSystem.State;
 using Workspace.CodeBase.Networking.Connection;
+using Workspace.CodeBase.Networking.Factory;
 using Workspace.CodeBase.Networking.MatchMaking;
 using Workspace.CodeBase.Services.Assets;
 using Workspace.CodeBase.Services.Logging;
@@ -40,19 +42,32 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
             _curtain.Show();
 
             _logger.LogInfrastructure("Gameplay state");
-            
-            await _assets.WarmUpAssetsByLabel(AssetsLabels.Gameplay);
-            await _sceneLoader.LoadAsync(SceneNames.Gameplay, LoadSceneMode.Single);
-            await _connectionService.ConnectToMasterServer();
+
+            await _connectionService.ConnectToServer();
+
+
+            await InitializePool();
             await _matchMakingService.JoinOrCreateRoom();
             
+            await _assets.WarmUpAssetsByLabel(AssetsLabels.Gameplay);
+            await _assets.WarmUpAssetsByLabel(AssetsLabels.Networking);
+            await _sceneLoader.LoadAsync(SceneNames.Gameplay, LoadSceneMode.Single);
+
             _curtain.Hide();
+        }
+
+        private async UniTask InitializePool()
+        {
+            PunAddressablesPool punPrefabPool = new PunAddressablesPool(_logger, _assets);
+            await punPrefabPool.Initialize();
+            PhotonNetwork.PrefabPool = punPrefabPool;
         }
 
         public async UniTask Exit()
         {
             _curtain.Show();
             await _assets.ReleaseAssetsByLabel(AssetsLabels.Gameplay);
+            await _assets.ReleaseAssetsByLabel(AssetsLabels.Networking);
         }
     }
 }

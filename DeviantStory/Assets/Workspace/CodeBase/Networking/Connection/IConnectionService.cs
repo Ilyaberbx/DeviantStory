@@ -5,7 +5,7 @@ namespace Workspace.CodeBase.Networking.Connection
     public interface IConnectionService
     {
         bool IsConnected { get; }
-        UniTask ConnectToMasterServer();
+        UniTask ConnectToServer();
         void Disconnect();
     }
 }

@@ -87,6 +87,7 @@ MonoBehaviour:
     - default
     - GamePlay
     - GameLoading
+    - Networking
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 752da3dd2f74fd84a95d4797f8e59585, type: 2}

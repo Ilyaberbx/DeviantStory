@@ -41,7 +41,7 @@ namespace Workspace.CodeBase.Networking.Connection
                 Disconnect();
         }
 
-        public async UniTask ConnectToMasterServer()
+        public async UniTask ConnectToServer()
         {
             PhotonNetwork.NickName = "Player" + Random.Range(1, 1000);
             PhotonNetwork.GameVersion = "0.1";

@@ -32,27 +32,25 @@ namespace Workspace.CodeBase.Services.Assets
         public async UniTask<TAsset> Load<TAsset>(AssetReference assetReference) where TAsset : class =>
             await Load<TAsset>(assetReference.AssetGUID);
 
-        public async UniTask<List<string>> GetAssetsListByLabel<TAsset>(string label) =>
-            await GetAssetsListByLabel(label, typeof(TAsset));
+        public IAsyncEnumerable<string> GetAssetsListByLabel<TAsset>(string label)
+            => GetAssetsListByLabel(label, typeof(TAsset));
 
-        public async UniTask<List<string>> GetAssetsListByLabel(string label, Type type = null)
+        public async IAsyncEnumerable<string> GetAssetsListByLabel(string label, Type type = null)
         {
-            AsyncOperationHandle<IList<IResourceLocation>> operationHandle = Addressables.LoadResourceLocationsAsync(label, type);
+            AsyncOperationHandle<IList<IResourceLocation>> operationHandle =
+                Addressables.LoadResourceLocationsAsync(label, type);
 
             IList<IResourceLocation> locations = await operationHandle.ToUniTask();
 
-            List<string> assetKeys = new List<string>(locations.Count);
-
             foreach (IResourceLocation location in locations)
-                assetKeys.Add(location.PrimaryKey);
+                yield return location.PrimaryKey;
 
             Addressables.Release(operationHandle);
-            return assetKeys;
         }
-
-        public async UniTask<TAsset[]> LoadAll<TAsset>(List<string> keys) where TAsset : class
+        
+        public async UniTask<TAsset[]> LoadAll<TAsset>(IEnumerable<string> keys) where TAsset : class
         {
-            List<UniTask<TAsset>> tasks = new List<UniTask<TAsset>>(keys.Count);
+            List<UniTask<TAsset>> tasks = new List<UniTask<TAsset>>();
 
             foreach (var key in keys)
                 tasks.Add(Load<TAsset>(key));
@@ -60,17 +58,28 @@ namespace Workspace.CodeBase.Services.Assets
             return await UniTask.WhenAll(tasks);
         }
 
+        public async UniTask<TAsset[]> LoadAll<TAsset>(IAsyncEnumerable<string> keys) where TAsset : class
+        {
+            List<UniTask<TAsset>> tasks = new List<UniTask<TAsset>>();
+
+            await foreach (var key in keys)
+                tasks.Add(Load<TAsset>(key));
+
+            return await UniTask.WhenAll(tasks);
+        }
+
+
         public async UniTask WarmUpAssetsByLabel(string label)
         {
-            List<string> assetsList = await GetAssetsListByLabel(label);
+            IAsyncEnumerable<string> assetsList = GetAssetsListByLabel(label);
             await LoadAll<object>(assetsList);
         }
 
         public async UniTask ReleaseAssetsByLabel(string label)
         {
-            List<string> assetsList = await GetAssetsListByLabel(label);
+            IAsyncEnumerable<string> assetsList = GetAssetsListByLabel(label);
 
-            foreach (var assetKey in assetsList)
+            await foreach (var assetKey in assetsList)
                 if (_assetRequests.TryGetValue(assetKey, out var handler))
                 {
                     Addressables.Release(handler);

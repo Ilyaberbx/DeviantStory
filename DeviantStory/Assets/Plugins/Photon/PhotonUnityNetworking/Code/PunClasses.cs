@@ -854,7 +854,7 @@ namespace Photon.Pun
     ///
     /// The ResourceCache is public, so it can be filled without relying on the Resources folders.
     /// </remarks>
-    public class DefaultPool : IPunPrefabPool
+    public class  DefaultPool : IPunPrefabPool
     {
         /// <summary>Contains a GameObject per prefabId, to speed up instantiation.</summary>
         public readonly Dictionary<string, GameObject> ResourceCache = new Dictionary<string, GameObject>();

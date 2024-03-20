@@ -4,5 +4,6 @@ namespace Workspace.CodeBase.Services.Assets
     {
         public const string Gameplay = "GamePlay";
         public const string GameLoading = "GameLoading";
+        public const string Networking = "Networking";
     }
 }

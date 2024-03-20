@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Workspace.CodeBase.Infrastructure.FiniteStateMachine.Factory;
 using Workspace.CodeBase.Infrastructure.GamePlay.States;
 
@@ -17,6 +18,8 @@ namespace Workspace.CodeBase.Infrastructure.GamePlay.Root
 
         public void Initialize()
         {
+            _stateMachine.RegisterState(_factory.Create<InitializeWorldState>());
+            _stateMachine.Enter<InitializeWorldState>().Forget();
         }
     }
 }
