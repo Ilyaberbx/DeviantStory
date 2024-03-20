@@ -46,12 +46,15 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
             await _connectionService.ConnectToServer();
 
 
-            await InitializePool();
-            await _matchMakingService.JoinOrCreateRoom();
-            
             await _assets.WarmUpAssetsByLabel(AssetsLabels.Gameplay);
             await _assets.WarmUpAssetsByLabel(AssetsLabels.Networking);
+            
+            await InitializePool();
+            await _matchMakingService.JoinOrCreateRoom();
+
+
             await _sceneLoader.LoadAsync(SceneNames.Gameplay, LoadSceneMode.Single);
+
 
             _curtain.Hide();
         }

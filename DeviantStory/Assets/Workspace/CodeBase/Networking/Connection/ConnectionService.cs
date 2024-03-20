@@ -37,7 +37,7 @@ namespace Workspace.CodeBase.Networking.Connection
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.L))
                 Disconnect();
         }
 

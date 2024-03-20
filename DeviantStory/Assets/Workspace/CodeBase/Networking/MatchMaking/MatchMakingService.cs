@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Workspace.CodeBase.Networking.MatchMaking
 {
-    public class MatchMakingCreationService : MatchMakingCallbacksHandler
+    public class MatchMakingService : MatchMakingCallbacksHandler
         , IMatchMakingService
         , IInitializable
         , IDisposable
@@ -18,7 +18,7 @@ namespace Workspace.CodeBase.Networking.MatchMaking
 
         private UniTaskCompletionSource _roomCreationTask;
 
-        public MatchMakingCreationService(IConnectionService connectionService
+        public MatchMakingService(IConnectionService connectionService
             , ILogService logger)
         {
             _connectionService = connectionService;
@@ -43,7 +43,7 @@ namespace Workspace.CodeBase.Networking.MatchMaking
             
             _logger.LogNetworking("Room creation started");
             
-            PhotonNetwork.JoinOrCreateRoom("RandomRoom", new RoomOptions { MaxPlayers = 2 }, TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom("RandomRoom", new RoomOptions { MaxPlayers = 3 }, TypedLobby.Default);
 
             return _roomCreationTask.Task;
         }

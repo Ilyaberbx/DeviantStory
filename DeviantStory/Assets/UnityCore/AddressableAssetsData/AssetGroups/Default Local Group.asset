@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 23626e6cf5eab354f84e368ef6d927d8
   m_SerializeEntries:
-  - m_GUID: 99c9720ab356a0642a771bea13969a05
-    m_Address: Init
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: d439c5461c9ca6448bd306c9489e153a
     m_Address: LoadingCurtain
     m_ReadOnly: 0
@@ -38,7 +34,6 @@ MonoBehaviour:
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels:
-    - GamePlay
     - Networking
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13624b266c5af5e4cb8fd34ec22397b6, type: 2}

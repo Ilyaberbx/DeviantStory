@@ -38,8 +38,10 @@ namespace Workspace.CodeBase.Networking.Factory
                 _logger.LogError("Can't load prefab " + prefabId + ". Make sure prefab labeled as Networking");
                 return default;
             }
-
-            return Object.Instantiate(prefab, position, rotation);
+            
+            GameObject gameObject = Object.Instantiate(prefab, position, rotation);
+            gameObject.SetActive(false);
+            return gameObject;
         }
 
         public void Destroy(GameObject gameObject)
