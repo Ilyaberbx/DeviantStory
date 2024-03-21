@@ -7,6 +7,6 @@ namespace Workspace.CodeBase.Networking.Factory
 {
     public interface INetworkFactory
     {
-        UniTask<T> Create<T>(AssetReference reference, Vector3 at, Quaternion rotation) where T : Object;
+        UniTask<T> Create<T>(AssetReference reference, Vector3 at, Quaternion rotation) where T : Component;
     }
 }

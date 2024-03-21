@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Workspace/Bundles/Scenes/Init.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Workspace/Bundles/Scenes/Gameplay.unity
+    guid: e54d273b7f1f79240b5f0c00336c24de
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 42e0c680857c76346b0fe3ec20304409,
       type: 2}

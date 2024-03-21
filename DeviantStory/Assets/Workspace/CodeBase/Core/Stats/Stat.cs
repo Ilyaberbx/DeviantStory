@@ -3,11 +3,11 @@ using System;
 namespace Workspace.CodeBase.Core.Stats
 {
     [Serializable]
-    public abstract class Stat<T> : Stat where T : StatAction
+    public abstract class Stat<T> : Stat where T : IStatAction
     {
         protected abstract bool OnTryApply(T action);
 
-        public override bool TryApply(StatAction action)
+        public override bool TryApply(IStatAction action)
         {
             if (action is T playerAction)
                 return OnTryApply(playerAction);
@@ -20,6 +20,6 @@ namespace Workspace.CodeBase.Core.Stats
     public abstract class Stat
     {
         public int Priority { get; set; }
-        public abstract bool TryApply(StatAction action);
+        public abstract bool TryApply(IStatAction action);
     }
 }

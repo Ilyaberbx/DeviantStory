@@ -13,7 +13,7 @@ namespace Workspace.CodeBase.Core.Stats
         private void OnValidate()
             => _stats = _stats.OrderByDescending(x => x.Priority).ToList();
 
-        public bool TryApply(StatAction action)
+        public bool TryApply(IStatAction action)
         {
             foreach (var stat in _stats)
             {

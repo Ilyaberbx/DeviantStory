@@ -26,15 +26,15 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - GamePlay
-  - m_GUID: e54d273b7f1f79240b5f0c00336c24de
-    m_Address: Gameplay
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 8ea6b87dfbf7ce84f96f0afd79b8f723
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels:
     - Networking
+  - m_GUID: 99498e0c125f9ad47ac861b0fe750e6d
+    m_Address: PlayerControls
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13624b266c5af5e4cb8fd34ec22397b6, type: 2}
   m_SchemaSet:

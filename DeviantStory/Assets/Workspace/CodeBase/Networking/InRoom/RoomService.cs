@@ -16,7 +16,7 @@ namespace Workspace.CodeBase.Networking.InRoom
         public RoomService(ILogService logger)
             => _logger = logger;
 
-        public Room CurrentRoom => PhotonNetwork.CurrentRoom;
+        private Room CurrentRoom => PhotonNetwork.CurrentRoom;
 
         public void Initialize() 
             => PhotonNetwork.AddCallbackTarget(this);
@@ -28,9 +28,15 @@ namespace Workspace.CodeBase.Networking.InRoom
             => PhotonNetwork.LeaveRoom();
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
-            => _logger.LogNetworking(newPlayer.NickName + " entered room");
+        {
+            _logger.LogNetworking(newPlayer.NickName + " entered room");
+            _logger.LogNetworking("Whole players count: " + CurrentRoom.Players.Values.Count);
+        }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
-            => _logger.LogNetworking(otherPlayer.NickName + " left room");
+        {
+            _logger.LogNetworking(otherPlayer.NickName + " left room");
+            _logger.LogNetworking("Whole players count: " + CurrentRoom.Players.Values.Count);
+        }
     }
 }

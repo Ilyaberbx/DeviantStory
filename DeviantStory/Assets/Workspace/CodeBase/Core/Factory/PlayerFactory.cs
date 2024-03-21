@@ -17,7 +17,7 @@ namespace Workspace.CodeBase.Core.Factory
             _playerReference = playerReference;
         }
 
-        public async UniTask<GameObject> Create(Vector3 at) 
-            => await _networkFactory.Create<GameObject>(_playerReference, at, Quaternion.identity);
+        public async UniTask<Transform> Create(Vector3 at) 
+            => await _networkFactory.Create<Transform>(_playerReference, at, Quaternion.identity);
     }
 }

@@ -24,7 +24,7 @@ namespace Workspace.CodeBase.Networking.Factory
             _logger = logger;
         }
 
-        public async UniTask<T> Create<T>(AssetReference reference, Vector3 at, Quaternion rotation) where T : Object
+        public async UniTask<T> Create<T>(AssetReference reference, Vector3 at, Quaternion rotation) where T : Component
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Workspace.CodeBase.Networking.Factory
                 
                 GameObject go = PhotonNetwork.Instantiate(result[0].PrimaryKey, at, rotation);
                 
-                _container.Inject(go);
+                _container.InjectGameObject(go);
                 
                 return go.GetComponent<T>();
             }

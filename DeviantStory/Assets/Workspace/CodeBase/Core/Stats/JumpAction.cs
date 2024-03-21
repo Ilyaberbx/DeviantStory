@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Workspace.CodeBase.Core.Stats
 {
     [Serializable]
-    public class JumpAction : StatAction
+    public class JumpAction : IStatAction
     {
         
         public float JumpPower;
@@ -17,7 +17,7 @@ namespace Workspace.CodeBase.Core.Stats
         [Select(typeof(IExecutor)), SerializeField]
         public SerializedType Type;
 
-        public void Execute<T>(IExecutor executor) where T : StatAction 
+        public void Execute<T>(IExecutor executor) where T : IStatAction 
             => throw new NotImplementedException();
     }
 

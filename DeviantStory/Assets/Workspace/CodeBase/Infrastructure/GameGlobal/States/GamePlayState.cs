@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
@@ -39,7 +40,7 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
 
         public async UniTask Enter()
         {
-            _curtain.Show();
+            _curtain.Show().Forget();
 
             _logger.LogInfrastructure("Gameplay state");
 
@@ -53,10 +54,10 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
             await _matchMakingService.JoinOrCreateRoom();
 
 
-            await _sceneLoader.LoadAsync(SceneNames.Gameplay, LoadSceneMode.Single);
+            PhotonNetwork.LoadLevel(1);
 
 
-            _curtain.Hide();
+            _curtain.Hide().Forget();
         }
 
         private async UniTask InitializePool()
@@ -65,10 +66,10 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
             await punPrefabPool.Initialize();
             PhotonNetwork.PrefabPool = punPrefabPool;
         }
-
+        
         public async UniTask Exit()
         {
-            _curtain.Show();
+            _curtain.Show().Forget();
             await _assets.ReleaseAssetsByLabel(AssetsLabels.Gameplay);
             await _assets.ReleaseAssetsByLabel(AssetsLabels.Networking);
         }

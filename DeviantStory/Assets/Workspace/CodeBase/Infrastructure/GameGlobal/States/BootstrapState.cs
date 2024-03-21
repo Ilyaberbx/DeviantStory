@@ -23,11 +23,11 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
         public async UniTask Enter()
         {
             await InitializeServices();
-
+            
             _logger.LogInfrastructure("Bootstrap globals");
             _stateMachine.Enter<GamePlayState>().Forget();
         }
-
+        
         private async UniTask InitializeServices()
         {
             await _logger.Initialize();
