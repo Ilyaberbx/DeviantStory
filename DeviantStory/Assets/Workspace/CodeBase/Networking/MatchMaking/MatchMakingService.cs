@@ -43,7 +43,7 @@ namespace Workspace.CodeBase.Networking.MatchMaking
             
             _logger.LogNetworking("Room creation started");
             
-            PhotonNetwork.JoinOrCreateRoom("RandomRoom", new RoomOptions { MaxPlayers = 3 }, TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom("RandomRoom", new RoomOptions { MaxPlayers = 15 }, TypedLobby.Default);
 
             return _roomCreationTask.Task;
         }
