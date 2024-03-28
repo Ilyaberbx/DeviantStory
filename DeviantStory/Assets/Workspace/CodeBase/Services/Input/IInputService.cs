@@ -9,5 +9,7 @@ namespace Workspace.CodeBase.Services.Input
         bool IsMovementPressed();
 
         bool IsRunPressed();
+
+        bool IsJumpPressed();
     }
 }

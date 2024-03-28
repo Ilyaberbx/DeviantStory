@@ -19,6 +19,8 @@ namespace Workspace.CodeBase.Core.Movement
 
 
         private IInputService _input;
+        private Vector3 _movement;
+        private float _gravity = -9.8f;
 
         [Inject]
         public void Construct(IInputService input)
@@ -52,18 +54,29 @@ namespace Workspace.CodeBase.Core.Movement
                 _animator.PlayRunning(false);
                 _animator.PlayMove(Vector3.zero);
             }
+            
+            ApplyGravity();
+        }
+
+        private void ApplyGravity()
+        {
+            if (_characterController.isGrounded)
+            {
+                _movement = _movement.WithY(-0.5f);
+                return;
+            }
+
+
+            _movement = _movement.AddY(_gravity * Time.deltaTime);
         }
 
         private void Move(Vector2 input, float speed)
         {
-            Vector3 direction = new Vector3(input.x, 0, input.y);
-            Vector3 movement = direction * speed * Time.deltaTime;
-
-            movement = movement.AddY(_characterController.GetGravity());
+            _movement = _movement.WithX(input.x).WithZ(input.y);
             
-            _characterController.Move(movement);
-            RaiseMoved(movement);
-            _animator.PlayMove(movement);
+            _characterController.Move(_movement * speed * Time.deltaTime);
+            RaiseMoved(_movement);
+            _animator.PlayMove(_movement);
         }
 
         protected virtual void RaiseMoved(Vector3 movement)

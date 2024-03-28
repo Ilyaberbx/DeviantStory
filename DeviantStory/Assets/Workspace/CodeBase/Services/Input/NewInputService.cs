@@ -22,5 +22,8 @@ namespace Workspace.CodeBase.Services.Input
 
         public bool IsRunPressed() 
             => _controls.Player.Run.IsPressed();
+
+        public bool IsJumpPressed() 
+            => _controls.Player.Jump.IsPressed();
     }
 }
