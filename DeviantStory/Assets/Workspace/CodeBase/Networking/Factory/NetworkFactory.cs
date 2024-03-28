@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
-using Workspace.CodeBase.Extensions;
 using Workspace.CodeBase.Services.Logging;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Workspace.CodeBase.Networking.Factory
 {
@@ -17,6 +14,7 @@ namespace Workspace.CodeBase.Networking.Factory
     {
         private readonly DiContainer _container;
         private readonly ILogService _logger;
+        
 
         public NetworkFactory(DiContainer container, ILogService logger)
         {

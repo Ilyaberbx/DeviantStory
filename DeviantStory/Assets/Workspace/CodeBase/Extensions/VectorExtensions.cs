@@ -4,6 +4,9 @@ namespace Workspace.CodeBase.Extensions
 {
     public static class VectorExtensions
     {
+        public static bool IsZero(this Vector3 vector)
+            => vector == Vector3.zero;
+
         public static Vector3 AddZ(this Vector3 vector, float value)
             => new(vector.x, vector.y, vector.z + value);
 

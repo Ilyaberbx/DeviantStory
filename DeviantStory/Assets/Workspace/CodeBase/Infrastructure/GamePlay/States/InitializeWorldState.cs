@@ -19,6 +19,7 @@ namespace Workspace.CodeBase.Infrastructure.GamePlay.States
 
         public async UniTask Enter()
         {
+            Debug.developerConsoleVisible = true;
             var player = await _playerFactory.Create(Vector3.zero);
             _cameraService.Initialize(player);
         }

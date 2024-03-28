@@ -25,10 +25,7 @@ namespace Workspace.CodeBase.Networking.Factory
             IAsyncEnumerable<string> keys = _assets.GetAssetsListByLabel<GameObject>(AssetsLabels.Networking);
 
             await foreach (string key in keys)
-            {
-                Debug.Log(key);
                 _prefabByAssetKey.Add(key, await _assets.Load<GameObject>(key));
-            }
         }
 
         public GameObject Instantiate(string prefabId, Vector3 position, Quaternion rotation)
