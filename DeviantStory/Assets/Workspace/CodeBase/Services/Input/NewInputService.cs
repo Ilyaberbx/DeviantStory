@@ -1,5 +1,6 @@
 using System;
-using UnityEngine;
+using UnityEngine.InputSystem;
+using Workspace.CodeBase.Extensions;
 using Zenject;
 
 namespace Workspace.CodeBase.Services.Input
@@ -8,22 +9,28 @@ namespace Workspace.CodeBase.Services.Input
     {
         private readonly PlayerControls _controls = new();
 
-        public void Initialize() 
+        public void Initialize()
             => _controls.Enable();
 
-        public void Dispose() 
+        public void Dispose()
             => _controls.Disable();
         
-        public Vector2 GetMovementInput() 
-            => _controls.Player.Movement.ReadValue<Vector2>();
+        public void RegisterMovement(Action<InputAction.CallbackContext> action, RegisterType type) 
+            => _controls.Player.Movement.Register(action, type);
 
-        public bool IsMovementPressed() 
-            => GetMovementInput().sqrMagnitude != 0;
+        public void UnregisterMovement(Action<InputAction.CallbackContext> action, RegisterType type)
+            => _controls.Player.Movement.Unregister(action, type);
 
-        public bool IsRunPressed() 
-            => _controls.Player.Run.IsPressed();
+        public void RegisterRun(Action<InputAction.CallbackContext> action, RegisterType type)
+            => _controls.Player.Run.Register(action, type);
 
-        public bool IsJumpPressed() 
-            => _controls.Player.Jump.IsPressed();
+        public void UnregisterRun(Action<InputAction.CallbackContext> action, RegisterType type)
+            => _controls.Player.Run.Unregister(action, type);
+
+        public void RegisterJump(Action<InputAction.CallbackContext> action, RegisterType type)
+            => _controls.Player.Jump.Register(action, type);
+
+        public void UnregisterJump(Action<InputAction.CallbackContext> action, RegisterType type)
+            => _controls.Player.Jump.Unregister(action, type);
     }
 }

@@ -33,5 +33,12 @@ namespace Workspace.CodeBase.Extensions
 
         public static Vector3 MultiplyX(this Vector3 vector, float value)
             => new(vector.x * value, vector.y, vector.z);
+
+        public static Vector3 MultiplyXY(this Vector3 vector, float value)
+            => new(vector.x * value, vector.y * value, vector.z);
+
+        public static Vector3 MultiplyXZ(this Vector3 vector, float value)
+            => new(vector.x * value, vector.y, vector.z * value);
+        
     }
 }

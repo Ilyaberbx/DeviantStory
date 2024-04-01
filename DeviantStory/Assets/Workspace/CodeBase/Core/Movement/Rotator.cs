@@ -17,7 +17,7 @@ namespace Workspace.CodeBase.Core.Movement
 
         private void Rotate(Vector3 movement)
         {
-            if(movement.IsZero())
+            if(movement.Flat().IsZero())
                 return;
 
             Vector3 positionToLookAt = movement.Flat();

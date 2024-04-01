@@ -1,5 +1,5 @@
+using System;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using Workspace.CodeBase.Infrastructure.Service.StateMachineSystem.State;
 using Workspace.CodeBase.Services.Logging;
 using Workspace.CodeBase.UI.LoadingCurtain;
@@ -24,8 +24,7 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
         public async UniTask Enter()
         {
             await InitializeServices();
-
-
+            
            // Application.targetFrameRate = 5;
             _logger.LogInfrastructure("Bootstrap globals");
             _stateMachine.Enter<GamePlayState>().Forget();
@@ -40,4 +39,5 @@ namespace Workspace.CodeBase.Infrastructure.GameGlobal.States
         public UniTask Exit()
             => default;
     }
+    
 }

@@ -1,15 +1,24 @@
-using UnityEngine;
+using System;
+using UnityEngine.InputSystem;
 
 namespace Workspace.CodeBase.Services.Input
 {
     public interface IInputService
     {
-        Vector2 GetMovementInput();
+        void RegisterMovement(Action<InputAction.CallbackContext> action, RegisterType type);
+        void UnregisterMovement(Action<InputAction.CallbackContext> action, RegisterType type);
 
-        bool IsMovementPressed();
+        void RegisterRun(Action<InputAction.CallbackContext> action, RegisterType type);
+        void UnregisterRun(Action<InputAction.CallbackContext> action, RegisterType type);
+        
+        void RegisterJump(Action<InputAction.CallbackContext> action, RegisterType type);
+        void UnregisterJump(Action<InputAction.CallbackContext> action, RegisterType type);
+    }
 
-        bool IsRunPressed();
-
-        bool IsJumpPressed();
+    public enum RegisterType
+    {
+        Started,
+        Performed,
+        Canceled
     }
 }
